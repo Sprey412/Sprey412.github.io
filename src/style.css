@@ -23,7 +23,16 @@
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
+    /* новая строка: легкая тень */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    /* плавный переход для эффекта при наведении */
+    transition: box-shadow 0.3s ease;
   }
+
+  /* При наведении увеличивается глубина тени */
+section:hover {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+}
   
   /* Заголовки */
   h1, h2, h3 {
