@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Резюме - Майоров Богдан Андреевич</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="src/style.css" />
 </head>
 <body>
@@ -122,8 +123,52 @@
 
   <!-- Дополнительное -->
   <footer class="footer">
-    <p>Резюме обновлено 14 января 2025 в 18:56</p>
+    <p>Резюме обновлено <span id="lastModified"></span></p>
   </footer>
+
+
+ <!-- Кнопка «Наверх» -->
+ <div class="scroll-to-top">↑</div>
+
+ <!-- Скрипт для прокрутки вверх и показа кнопки -->
+ <script>
+   $(document).ready(function() {
+     var btn = $('.scroll-to-top');
+
+     // Отслеживаем прокрутку окна
+     $(window).scroll(function() {
+       if ($(window).scrollTop() > 300) {
+         btn.addClass('show'); // показываем кнопку
+       } else {
+         btn.removeClass('show'); // скрываем кнопку
+       }
+     });
+
+     // Клик по кнопке прокручивает страницу наверх
+     btn.on('click', function(e) {
+       e.preventDefault();
+       $('html, body').animate({scrollTop: 0}, '300'); // 300 мс для плавности
+     });
+   });
+ </script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const date = new Date(document.lastModified);
+    // Локализация на русский, формат типа "14 января 2025 г., 18:56"
+    const options = {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    document.getElementById('lastModified').textContent = 
+      date.toLocaleString('ru-RU', options);
+  });
+</script>
+
 
 </body>
 </html>
